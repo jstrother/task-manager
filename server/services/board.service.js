@@ -22,6 +22,11 @@ module.exports = {
         this._handleResponse(err, board, res);
       });
   },
+  update(req, res) {
+    Board.findByIdAndUpdate(req.params.boardId, {title: req.body.title}, (err, board) => {
+      this._handleResponse(err, board, res);
+    });
+  },
   _handleResponse(err, data, res) {
     if (err) {
       res.status(400).end();
